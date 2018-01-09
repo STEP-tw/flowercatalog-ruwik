@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flower Catalog</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+  </head>
+  <body>
+    <script type="text/javascript">
+    const showImage = function(){
+      document.getElementById('jar').style.visibility="visible";
+    }
+
+    const hideImage = function(){
+      document.getElementById('jar').style.visibility="hidden";
+      setTimeout(showImage,1000);
+    }
+    </script>
+    <h1 align="center">Flower Catalog</h1>
+    <hr>
+    <h3 align="right">Flower Catalog</h3>
+    <hr>
+    <div id="container">
+      <div class="flower">
+        <img id='freshorigins' src="/public/docs/freshorigins.jpg" alt="freshorigins">
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="/public/html/abeliophyllum.html">Abeliophyllum</a></li>
+          <li><a href="/public/html/ageratum.html">Ageratum</a></li>
+          <img id="jar" onclick="hideImage()" src="/public/docs/animated-flower-image-0021.gif" alt="Watering Jar">
+          <li><a href="/public/html/guestBook.html">Guest Book</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

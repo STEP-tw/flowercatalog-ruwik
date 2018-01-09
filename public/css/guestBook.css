@@ -1,0 +1,81 @@
+h1{
+  font-size: 32px;
+  color: orange;
+  font-family: sans-serif;
+  margin-top: 70px;
+  margin-bottom: 8px;
+}
+
+h3{
+  height: auto;
+  width: auto;
+}
+
+.logout {
+  float: right;
+  margin-right: 20px;
+  margin-top: 0px;
+}
+
+.display{
+  font-size: 20px;
+  margin-left: 70px;
+}
+
+hr{
+  margin-right: 50px;
+}
+
+#name{
+  margin-bottom: 8px;
+}
+
+#commentBox{
+  height: 50px;
+  width: 200px;
+}
+
+th{
+  padding-right: 200px;
+}
+
+tr{
+  border: 1px solid black;
+  border-color: black;
+}
+
+#commemtHeading{
+  padding-right: 467px;
+}
+
+#headings{
+  width: 1351px;
+}
+
+#time{
+  font-style: normal;
+  height: auto;
+  padding-right: 180px;
+}
+
+#date{
+  height: auto;
+  font-style: normal;
+  padding-right: 154px;
+}
+
+#comments{
+  width: auto;
+}
+
+#name{
+  height: auto;
+  width: 250px;
+}
+
+#commentGiven{
+  font-style: normal;
+  height: auto;
+  padding-right: 50px;
+  width: 501px;
+}

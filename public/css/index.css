@@ -1,0 +1,42 @@
+h1{
+  font-family: sans-serif;
+  margin-top: 70px;
+  margin-bottom: 8px;
+}
+
+hr{
+  margin-top: 0px;
+}
+
+h3{
+  margin-top: 8px;
+  color: orange;
+  margin-bottom: 8px;
+  margin-right: 50px;
+}
+
+.flower{
+  float: left;
+  display: inline-block;
+  width: 75%;
+  height: auto;
+  margin-right: 0px;
+}
+
+#freshorigins{
+  width: 100%;
+  height: auto;
+}
+
+#jar{
+  border: 0px;
+}
+
+.links{
+  margin-top: 15%;
+  float: left;
+  margin-left: 5%;
+  display: inline-block;
+  width: 150px;
+  height: auto;
+}

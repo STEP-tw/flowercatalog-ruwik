@@ -1,0 +1,33 @@
+h1{
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: orange;
+  font-family: sans-serif;
+  margin-top: 70px;
+}
+
+hr{
+  margin-top: 0px;
+}
+
+p{
+  width: 730px;
+  height: auto;
+  margin-right: 40px;
+}
+
+.image{
+  float: left;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  display: inline-block;
+}
+
+.text{
+  width: 730px;
+  margin-right: 40px;
+  margin-left: 10px;
+  display: inline-block;
+  float: left;
+}
