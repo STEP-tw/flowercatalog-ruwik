@@ -12,9 +12,9 @@
     <div class="display">
       <h3>Leave a comment</h3>
       <div class="logout">
-        <button type="button" name="logout">Logout</button>
+      <a href="/logout"><button type="button" name="logout">Logout</button></a>
       </div>
-      <form action="/public/html/guestBook.html" method="post">
+      <form action="/udpateComments" method="post">
         Name: <input id="name" type="text" name="name" required><br>
         Comment: <textarea id="commentBox" name="Comment" rows="8" cols="80"></textarea><br>
         <input type="submit" value="Submit">
