@@ -106,10 +106,6 @@ app.get('/public/html/login.html',(req,res)=>{
   readAndWriteFile('.'+req.url,res);
 })
 
-app.get('/data/data.js',(req,res)=>{
-  readAndWriteFile('.'+req.url,res);
-})
-
 app.post('/public/html/writeCommentHere.html',(req,res)=>{
   readAndWriteFile('.'+req.url,res);
 })

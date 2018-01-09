@@ -27,9 +27,9 @@ const createCompleteTable = function(){
 
 const updateComments = function(){
   let commentsTable = document.getElementById('comments');
+  commentsTable.innerHTML = createCompleteTable();
   document.getElementById('name').value = '';
   document.getElementById('commentBox').value = '';
-  commentsTable.innerHTML = createCompleteTable();
 };
 
 window.onload = updateComments;
