@@ -1,7 +1,7 @@
 let fs = require('fs');
 let http = require('http');
 let webApp = require('./webApp.js');
-
+let nameOfUser = ''
 
 const giveFileType = function(url){
   return url.slice(url.lastIndexOf('.'));
@@ -79,6 +79,20 @@ const readAndWriteFile = function(filePath,res){
   });
 };
 
+const replaceAndWriteFile = function(filePath,res,content,area){
+  fs.readFile(filePath,(err,data)=>{
+    if(err){
+      res.statusCode = 404;
+      res.write('<h1>file not found</h1>');
+    } else {
+      res.statusCode = 200;
+      res.setHeader('Content-Type',giveContentType(filePath));
+      res.write(data.toString().replace(area,content));
+    };
+    res.end();
+  });
+}
+
 const registered_users = [{userName:'manikm',name:'Manindra Krishna Motukuri'}]
 
 let loadUser = (req,res)=>{
@@ -120,6 +134,7 @@ app.get('/login',(req,res)=>{
   res.end();
 });
 app.post('/login',(req,res)=>{
+  nameOfUser = req.body.userName;
   let user = registered_users.find(u=>u.userName==req.body.userName);
   if(!user) {
     res.setHeader('Set-Cookie',`logInFailed=true`);
@@ -198,7 +213,7 @@ app.get('/public/html/login.html',(req,res)=>{
 })
 
 app.get('/public/html/writeCommentHere.html',(req,res)=>{
-  readAndWriteFile('.'+req.url,res);
+  replaceAndWriteFile('.'+req.url,res,nameOfUser,'userName');
 })
 
 app.get('/data/data.js',(req,res)=>{
