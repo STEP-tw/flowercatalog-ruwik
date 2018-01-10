@@ -17,6 +17,49 @@ const contentTypeOfFiles = {
   '.ico': 'img/ico'
 }
 
+const giveTime = function(){
+  let timeAndDate = new Date();
+  return timeAndDate.getHours()+':'+timeAndDate.getMinutes()+':'+timeAndDate.getSeconds();
+};
+
+const giveDate = function(){
+  let date = new Date();
+  return date.getDate()+"/"+(1+date.getMonth())+'/'+date.getFullYear();
+};
+
+const createCommentObject = function(name,comment){
+  let commentGiven = {}
+  commentGiven['name'] = name;
+  commentGiven['comment'] = comment;
+  commentGiven['date'] = giveDate();
+  commentGiven['time'] = giveTime();
+  return commentGiven;
+}
+
+const writeInDataBase = function(data){
+  let content = fs.readFileSync('./data/data.js','utf8');
+  content = content.slice(content.indexOf('['));
+  content = JSON.parse(content);
+  content.unshift(data);
+  content = 'var data = '+JSON.stringify(content,null,2);
+  fs.writeFile('./data/data.js',content,(err)=>{
+    if(err){
+      console.log('failed');
+    };
+  });
+};
+
+const storeData = function(data){
+  let name = data.name;
+  let comment = data.Comment;
+  comment = decodeURIComponent(comment);
+  name = decodeURIComponent(name);
+  comment = comment.replace(/\+/g,' ');
+  name = name.replace(/\+/g,' ');
+  let dataToStore = createCommentObject(name,comment);
+  writeInDataBase(dataToStore);
+}
+
 const giveContentType = function(url){
   let fileType = giveFileType(url);
   return contentTypeOfFiles[fileType];
@@ -72,8 +115,8 @@ app.get('/index.html',(req,res)=>{
 })
 app.get('/login',(req,res)=>{
   res.setHeader('Content-type','text/html');
-  if(req.cookies.logInFailed) res.write('<p>logIn Failed</p>');
-  res.write('<form method="POST"> <input name="userName"><input type="submit"></form>');
+  if(req.cookies.logInFailed) res.write('<p>Invalid User Name</p>');
+  res.write('<form method="POST"> <input name="userName"><input type="submit"></form><a href="/">Home Page</a>');
   res.end();
 });
 app.post('/login',(req,res)=>{
@@ -88,6 +131,11 @@ app.post('/login',(req,res)=>{
   user.sessionid = sessionid;
   res.redirect('/public/html/writeCommentHere.html');
 });
+
+app.post('/udpateComments',(req,res)=>{
+  storeData(req.body);
+  res.redirect('/public/html/writeCommentHere.html');
+})
 
 app.get('/public/css/index.css',(req,res)=>{
   readAndWriteFile('.'+req.url,res);
@@ -147,11 +195,6 @@ app.get('/public/css/guestBook.css',(req,res)=>{
 
 app.get('/public/html/login.html',(req,res)=>{
   readAndWriteFile('.'+req.url,res);
-})
-
-app.post('/updateComments',(req,res)=>{
-  res.redirect('/public/html/writeCommentHere.html');
-  return;
 })
 
 app.get('/public/html/writeCommentHere.html',(req,res)=>{
